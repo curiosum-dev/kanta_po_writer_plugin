@@ -1,4 +1,4 @@
-# Kanta DeepL Plugin
+# Kanta PO Writer Plugin
 
 <div align="center">
   <br />
@@ -20,7 +20,7 @@
 
 ## About
 
-Not all of us are polyglots, and sometimes we need the help of machine translation tools. For this reason, we have provided plug-ins for communication with external services that will allow you to translate texts into another language without knowing it. As a first step, we introduced integration with DeepL API offering 500,000 characters/month for free and more in paid plans. To use DeepL API add `Kanta.DeepL.Plugin` to the list of plugins along with the API key from your account at DeepL. New features will then be added to the Kanta UI that will allow you to translate using this tool.
+TOOD
 
 ## Installation
 
@@ -31,7 +31,8 @@ The package can be installed by adding `kanta_deep_l_plugin` to your list of dep
 def deps do
   [
     {:kanta, "~> 0.1.2"} # REQUIRED
-    {:kanta_deep_l_plugin, "~> 0.1.0"}
+    # not on hex.pm yet, use github: ...
+    {:kanta_po_writer_plugin, "~> 0.1.0"},
   ]
 end
 ```
@@ -41,7 +42,7 @@ end
 config :kanta,
   ...
   plugins: [
-    {Kanta.DeepL.Plugin, api_key: "YOUR_DEEPL_API_KEY"}
+    Kanta.POWriter.Plugin,
   ]
 ```
 
