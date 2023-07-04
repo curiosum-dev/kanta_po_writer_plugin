@@ -1,10 +1,10 @@
-defmodule Kanta.DeepL.Plugin.MixProject do
+defmodule Kanta.PoWriter.Plugin.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :kanta_deep_l_plugin,
-      description: "Kanta plugin for using DeepL translator from the UI",
+      app: :kanta_po_writer_plugin,
+      description: "Kanta plugin for exporting to PO files",
       version: "0.1.0",
       elixir: "~> 1.14",
       package: package(),
@@ -23,8 +23,6 @@ defmodule Kanta.DeepL.Plugin.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:tesla, "~> 1.4"},
-      {:jason, ">= 1.0.0"},
       {:phoenix_live_view, "~> 0.18"},
       {:kanta, "~> 0.1.3", optional: true},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
@@ -38,7 +36,7 @@ defmodule Kanta.DeepL.Plugin.MixProject do
   defp package do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/curiosum-dev/kanta_deep_l_plugin"},
+      links: %{"GitHub" => "https://github.com/ravensiris/kanta_po_writer_plugin"},
       files: ~w(lib LICENSE.md mix.exs README.md)
     ]
   end
