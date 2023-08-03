@@ -83,8 +83,6 @@ defmodule Kanta.POWriter.Extractor do
   def write_messages(msgs, {:ok, path}), do: write_messages(msgs, path)
 
   def write_messages(%Expo.Messages{} = msgs, path) do
-    IO.inspect(msgs)
-    IO.inspect(path)
     iodata = Expo.PO.compose(msgs)
 
     with :ok <- File.write!(path, iodata) do
