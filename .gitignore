@@ -24,3 +24,16 @@ kanta_deep_l_plugin-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+.nix-mix
+.nix-hex
