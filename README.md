@@ -8,13 +8,13 @@
   <br />
   <br />
   <p style="margin-top: 3rem; font-size: 14pt;" align="center">
-    DeepL Integration for <a href="https://github.com/curiosum-dev/kanta">Kanta</a>
+    PO Writer for <a href="https://github.com/curiosum-dev/kanta">Kanta</a>
     <br />
     <a href="https://kanta.munasoft.pl">View Demo</a>
     ·
-    <a href="https://github.com/curiosum-dev/kanta_deep_l_plugin/issues">Report Bug</a>
+    <a href="https://github.com/curiosum-dev/kanta_po_writer_plugin/issues">Report Bug</a>
     ·
-    <a href="https://github.com/curiosum-dev/kanta_deep_l_plugin/issues">Request Feature</a>
+    <a href="https://github.com/curiosum-dev/kanta_po_writer_plugin/issues">Request Feature</a>
   </p>
 </div>
 
@@ -24,7 +24,7 @@ TOOD
 
 ## Installation
 
-The package can be installed by adding `kanta_deep_l_plugin` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `kanta_po_writer_plugin` to your list of dependencies in `mix.exs`:
 
 ```elixir
 # mix.exs
@@ -32,7 +32,7 @@ def deps do
   [
     {:kanta, "~> 0.1.2"} # REQUIRED
     # not on hex.pm yet, use github: ...
-    {:kanta_po_writer_plugin, "~> 0.1.0"},
+    {:kanta_po_writer_plugin, "~> 0.0.1"},
   ]
 end
 ```
@@ -48,7 +48,8 @@ config :kanta,
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create.
+Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. We prefer gitflow and Conventional commits style but we don't require that. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -64,6 +65,8 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.md` for more information.
 
 ## Contact
+
+Maksymilian Jodłowski - maksymilian.jodlowski@curiosum.com
 
 Michał Buszkiewicz - michal@curiosum.com
 
