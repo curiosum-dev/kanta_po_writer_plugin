@@ -6,7 +6,7 @@ defmodule Kanta.PoWriter.Plugin.MixProject do
       app: :kanta_po_writer_plugin,
       description: "Kanta plugin for exporting to PO files",
       version: "0.1.0",
-      elixir: "~> 1.14",
+      elixir: ">= 1.14.0",
       package: package(),
       start_permanent: Mix.env() == :prod,
       deps: deps()
