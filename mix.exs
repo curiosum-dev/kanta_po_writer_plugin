@@ -25,11 +25,14 @@ defmodule Kanta.PoWriter.Plugin.MixProject do
     [
       {:phoenix_live_view, "~> 0.18"},
       {:kanta, "~> 0.1.3", optional: true},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
+
+      # dev
       {:doctor, "~> 0.21.0", only: :dev},
       {:versioce, "~> 2.0.0", only: :dev},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:dialyxir, "~> 1.3", only: [:dev], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:styler, "~> 0.8", only: [:dev, :test], runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
