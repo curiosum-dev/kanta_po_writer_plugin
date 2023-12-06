@@ -4,6 +4,8 @@ defmodule Kanta.POWriter.Extractor do
   use Gradient.TypeAnnotation
 
   alias Kanta.Translations
+  alias Kanta.Translations.Domain
+  alias Kanta.Translations.Locale
 
   @default_priv "priv/gettext"
 
@@ -109,6 +111,14 @@ defmodule Kanta.POWriter.Extractor do
 
   def parse_po_file({:ok, path}), do: Expo.PO.parse_file(path)
   def parse_po_file(rest), do: rest
+
+  def replace_with_extracted!(%Domain{} = domain, %Locale{} = locale) do
+    extracted_path = "priv/static/kanta_po_writer/#{locale.iso639_code}/#{domain.name}.po"
+    priv = Application.get_env(:kanta, :priv, @default_priv)
+    gettext_path = Path.join(priv, "#{locale.iso639_code}/LC_MESSAGES/#{domain.name}.po")
+
+    File.cp!(extracted_path, gettext_path)
+  end
 
   @spec unwrap!(result(any())) :: any()
   defp unwrap!({:ok, thing}), do: thing
