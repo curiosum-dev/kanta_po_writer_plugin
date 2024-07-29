@@ -74,8 +74,26 @@ defmodule Kanta.POWriter.Extractor do
     end
   end
 
-  # TODO: Plural messages
-  def translate_message(%Expo.Message.Plural{} = msg, _, _), do: {:ok, msg}
+  def translate_message(%Expo.Message.Plural{} = msg, domain_id, locale) do
+    msgid = List.first(msg.msgid)
+
+    with {:ok, kanta_msg} <-
+           Translations.get_message(
+             filter: [msgid: msgid, domain_id: domain_id],
+             preloads: [plural_translations: :locale]
+           ) do
+      translations = kanta_msg.plural_translations
+
+      new_msgstr =
+        translations
+        |> Enum.filter(fn translation -> translation.locale.iso639_code == locale end)
+        |> Enum.reduce(%{}, &Map.put(&2, &1.nplural_index, [&1.translated_text || &1.original_text || ""]))
+
+      msg = assert_type(%Expo.Message.Plural{msg | msgstr: new_msgstr}, Expo.Message.Plural.t())
+
+      {:ok, msg}
+    end
+  end
 
   @spec write_messages(messages :: result_or_value(Expo.Messages.t()), path :: result_or_value(binary())) ::
           result(Expo.Messages.t())
