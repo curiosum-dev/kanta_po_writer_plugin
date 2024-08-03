@@ -24,7 +24,7 @@ defmodule Kanta.PoWriter.Plugin.MixProject do
   defp deps do
     [
       {:phoenix_live_view, "~> 0.18"},
-      {:kanta, "~> 0.1.3", optional: true},
+      {:kanta, github: "curiosum-dev/kanta", branch: "feature/child-lv-components", override: true},
 
       # dev
       {:doctor, "~> 0.21.0", only: :dev},
