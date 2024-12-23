@@ -23,7 +23,7 @@ defmodule Kanta.PoWriter.Plugin.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix_live_view, "~> 0.18"},
+      {:phoenix_live_view, ">= 0.18.0"},
       {:kanta, "~> 0.4.1", optional: true},
 
       # dev
