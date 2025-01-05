@@ -6,6 +6,7 @@ defmodule Kanta.POWriter.Extractor do
   alias Kanta.Translations
 
   @default_priv "priv/gettext"
+  @default_context "default"
 
   @type error() :: atom() | binary()
   @type result(value) :: {:ok, value} | {:error, error()}
@@ -51,10 +52,12 @@ defmodule Kanta.POWriter.Extractor do
     # maybe find for each msgid ???
     # how to resolve conflicts then ???
     msgid = List.first(msg.msgid)
+    msgctxt = if msg.msgctxt, do: List.first(msg.msgctxt), else: @default_context
 
-    with {:ok, kanta_msg} <-
+    with {:ok, context} <- Translations.get_context(filter: [name: msgctxt]),
+         {:ok, kanta_msg} <-
            Translations.get_message(
-             filter: [msgid: msgid, domain_id: domain_id],
+             filter: [msgid: msgid, domain_id: domain_id, context_id: context.id],
              preloads: [singular_translations: :locale]
            ) do
       translations = kanta_msg.singular_translations
@@ -75,11 +78,13 @@ defmodule Kanta.POWriter.Extractor do
   end
 
   def translate_message(%Expo.Message.Plural{} = msg, domain_id, locale) do
-    msgid = List.first(msg.msgid)
+    msgid = List.first(msg.msgid_plural)
+    msgctxt = if msg.msgctxt, do: List.first(msg.msgctxt), else: @default_context
 
-    with {:ok, kanta_msg} <-
+    with {:ok, context} <- Translations.get_context(filter: [name: msgctxt]),
+         {:ok, kanta_msg} <-
            Translations.get_message(
-             filter: [msgid: msgid, domain_id: domain_id],
+             filter: [msgid: msgid, domain_id: domain_id, context_id: context.id],
              preloads: [plural_translations: :locale]
            ) do
       translations = kanta_msg.plural_translations
